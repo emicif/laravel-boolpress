@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ post.title }}
+    <img :src="'storage/' + post.cover" :alt="post.title" />
   </div>
 </template>
 
