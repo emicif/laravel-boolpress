@@ -2,6 +2,7 @@
   <div>
     <h1>WORK IN PROGRESS</h1>
     <h2>Sito in costruzione</h2>
+    <router-view></router-view>
   </div>
 </template>
 
