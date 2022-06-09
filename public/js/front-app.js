@@ -1988,8 +1988,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PostCardComponent"
+  name: "PostCardComponent",
+  props: ["post"]
 });
 
 /***/ }),
@@ -2015,7 +2018,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BlogComponent",
@@ -2030,7 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    console.log("mounted");
+    //console.log("mounted ok");
     window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     window.axios.get("http://127.0.0.1:8000/api/posts").then(function (_ref) {
       var status = _ref.status,
@@ -37726,7 +37728,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("MOSTRO TUTTI I POST")])
+  return _c("div", [_vm._v("\n  " + _vm._s(_vm.post.title) + "\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37751,17 +37753,23 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 text-center" }, [_vm._v("My Posts")]),
-      _vm._v(" "),
-      _vm.posts.length > 0
-        ? _c(
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("div", { staticClass: "col-12 text-center" }, [_vm._v("My Posts")]),
+        _vm._v(" "),
+        _vm._l(_vm.posts, function (post, index) {
+          return _c(
             "div",
-            [_c("PostCardComponent", { attrs: { posts: _vm.posts } })],
+            { key: index },
+            [_c("PostCardComponent", { attrs: { post: post } })],
             1
           )
-        : _c("div", [_vm._v("Caricamento in corso")]),
-    ]),
+        }),
+      ],
+      2
+    ),
   ])
 }
 var staticRenderFns = []

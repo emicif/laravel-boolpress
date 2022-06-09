@@ -2,10 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">My Posts</div>
-      <div v-if="posts.length > 0">
-        <PostCardComponent :posts="posts" />
+      <div v-for="(post, index) in posts" :key="index">
+        <PostCardComponent :post="post" />
       </div>
-      <div v-else>Caricamento in corso</div>
     </div>
   </div>
 </template>
@@ -14,16 +13,18 @@
 import PostCardComponent from "../components/PostCardComponent";
 export default {
   name: "BlogComponent",
+
   components: {
     PostCardComponent,
   },
+
   data() {
     return {
       posts: [],
     };
   },
   mounted() {
-    console.log("mounted");
+    //console.log("mounted ok");
     window.axios = require("axios");
     window.axios
       .get("http://127.0.0.1:8000/api/posts")
