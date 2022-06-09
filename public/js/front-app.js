@@ -1950,8 +1950,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "HeaderComponent"
+  name: "HeaderComponent",
+  data: function data() {
+    return {
+      menu: [{
+        linkName: "home",
+        label: "Home"
+      }, {
+        linkName: "blog",
+        label: "My Posts"
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -37614,27 +37633,24 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("nav", [
-      _c("ul", [
-        _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: { name: "home" } } }, [
-              _vm._v("Home"),
-            ]),
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: { name: "blog" } } }, [
-              _vm._v("My Posts"),
-            ]),
-          ],
-          1
-        ),
-      ]),
+      _c(
+        "ul",
+        _vm._l(_vm.menu, function (menuItem, index) {
+          return _c(
+            "li",
+            { key: index },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: menuItem.linkName } } },
+                [_vm._v(_vm._s(menuItem.label))]
+              ),
+            ],
+            1
+          )
+        }),
+        0
+      ),
     ]),
   ])
 }
